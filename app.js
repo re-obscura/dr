@@ -95,6 +95,26 @@ function insertSmileys(html) {
 const sndTada = new Audio('tada3.mp3');
 const sndStop = new Audio('windows-xp-critical-stop.mp3');
 const sndNav = new Audio('windows-navigation-start.mp3');
+const sndStartup = new Audio('windows-xp-startup.mp3');
+
+// Smart open: dblclick on desktop, single click on mobile
+const isMobile = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+const dblClickTimers = {};
+window.smartOpen = function (winId, tbId) {
+  if (isMobile) {
+    window.openWindow(winId, tbId);
+    return;
+  }
+  // Desktop: require double-click
+  const key = winId;
+  if (dblClickTimers[key]) {
+    clearTimeout(dblClickTimers[key]);
+    dblClickTimers[key] = null;
+    window.openWindow(winId, tbId);
+  } else {
+    dblClickTimers[key] = setTimeout(() => { dblClickTimers[key] = null; }, 400);
+  }
+};
 
 window.openWindow = function (winId, tbId) {
   document.getElementById(winId).classList.remove('hidden');
@@ -163,6 +183,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Generate a new mail entry
   function receiveMail() {
+    // Show wait cursor
+    document.body.style.cursor = 'wait';
+    setTimeout(() => { document.body.style.cursor = ''; }, 800);
+
     const name = randomFrom(NAMES);
     const text = generateToast(name);
     const media = getRandomMedia();
@@ -289,6 +313,19 @@ document.addEventListener('DOMContentLoaded', () => {
       startBtn.classList.remove('open');
     }
   });
+
+  // F11 prompt: adjust text for mobile
+  if (isMobile) {
+    const f11text = document.getElementById('f11-text');
+    if (f11text) f11text.textContent = 'Добро пожаловать в Windows 2000.\n\nНажмите OK для начала работы.';
+  }
+
+  // Play startup sound (called from F11 prompt OK/X button)
+  window.playStartup = function () {
+    document.getElementById('f11-prompt').classList.add('hidden');
+    sndStartup.volume = 0.5;
+    sndStartup.play().catch(e => { });
+  };
 
   // Taskbar Clock
   function updateClock() {

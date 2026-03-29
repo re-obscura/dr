@@ -9,23 +9,49 @@
 </head>
 
 <body>
-  <!-- Desktop Icons -->
-  <div class="desktop-icon" style="top:20px; left:20px" ondblclick="window.openWindow('win-computer', 'tb-computer')">
-    <img
-      src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath fill='%23d4d0c8' d='M4 6h24v16H4z'/%3E%3Cpath fill='%23fff' d='M6 8h20v12H6z'/%3E%3Cpath fill='%230a246a' d='M8 10h16v8H8z'/%3E%3Cpath fill='%23808080' d='M4 6v16h24V6H4zm1 1h22v14H5V7z'/%3E%3Cpath fill='%23d4d0c8' d='M12 24h8v2h-8zM10 26h12v2H10z'/%3E%3C/svg%3E"
-      alt="My Computer">
-    <span>Мой компютер</span>
+  <!-- F11 Fullscreen Prompt -->
+  <div class="win-overlay" id="f11-prompt" style="background:#008080;"
+    onclick="document.getElementById('f11-prompt').classList.add('hidden')">
+    <div class="win-dialog" onclick="event.stopPropagation()">
+      <div class="title-bar">
+        <div class="title-bar-text">Windows 2000</div>
+        <div class="title-bar-controls">
+          <button class="win-btn-sm"
+            onclick="playStartup(); document.getElementById('f11-prompt').classList.add('hidden')"><span
+              class="icon-close">X</span></button>
+        </div>
+      </div>
+      <div class="dialog-body">
+        <div class="dialog-icon"><img
+            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%230a246a' stroke='%23000' stroke-width='1'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-size='18' font-weight='bold' fill='%23fff'%3Ei%3C/text%3E%3C/svg%3E"
+            width="32" height="32"></div>
+        <div class="dialog-text" id="f11-text">Нажмите F11 для перехода в полноэкранный режим.
+
+          Для максимального погружения в эстетику Windows 2000.</div>
+      </div>
+      <div class="dialog-buttons">
+        <button class="win-btn win-btn-primary"
+          onclick="playStartup(); document.getElementById('f11-prompt').classList.add('hidden')">OK</button>
+      </div>
+    </div>
   </div>
-  <div class="desktop-icon" style="top:100px; left:20px" ondblclick="window.openWindow('win-bin', 'tb-bin')">
+
+  <!-- Desktop Icons -->
+  <div class="desktop-icon" style="top:20px; left:20px" onclick="smartOpen('win-computer', 'tb-computer')">
     <img
-      src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath fill='%23d4d0c8' d='M10 6h12v2H10zM8 8h16v2H8z'/%3E%3Cpath fill='%23fff' d='M10 10h12v18H10z'/%3E%3Cpath fill='%23dfdfdf' d='M11 11h10v16H11z'/%3E%3Cpath fill='%23808080' d='M12 12h2v14h-2zm3 0h2v14h-2zm3 0h2v14h-2z'/%3E%3C/svg%3E"
+      src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect x='6' y='6' width='36' height='26' rx='2' fill='%23c0c0c0' stroke='%23808080' stroke-width='1'/%3E%3Crect x='8' y='8' width='32' height='22' fill='%23fff' stroke='%23404040' stroke-width='0.5'/%3E%3Crect x='10' y='10' width='28' height='18' fill='%230a246a'/%3E%3Crect x='12' y='12' width='10' height='6' fill='%23ffcc00' rx='1'/%3E%3Crect x='12' y='20' width='10' height='6' fill='%2327c93f' rx='1'/%3E%3Crect x='26' y='12' width='10' height='6' fill='%23ff5f56' rx='1'/%3E%3Crect x='26' y='20' width='10' height='6' fill='%230a84ff' rx='1'/%3E%3Crect x='18' y='32' width='12' height='3' fill='%23c0c0c0' stroke='%23808080'/%3E%3Crect x='14' y='35' width='20' height='3' rx='1' fill='%23c0c0c0' stroke='%23808080'/%3E%3Ccircle cx='24' cy='30' r='1.5' fill='%2327c93f'/%3E%3C/svg%3E"
+      alt="My Computer">
+    <span>Мой компьютер</span>
+  </div>
+  <div class="desktop-icon" style="top:110px; left:20px" onclick="smartOpen('win-bin', 'tb-bin')">
+    <img
+      src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect x='14' y='6' width='20' height='3' rx='1' fill='%23c0c0c0' stroke='%23808080'/%3E%3Crect x='12' y='9' width='24' height='4' rx='1' fill='%23c0c0c0' stroke='%23808080'/%3E%3Cpath d='M14 13h20l-2 28H16z' fill='%23d4d0c8' stroke='%23808080'/%3E%3Cline x1='19' y1='17' x2='18' y2='37' stroke='%23808080' stroke-width='1.5'/%3E%3Cline x1='24' y1='17' x2='24' y2='37' stroke='%23808080' stroke-width='1.5'/%3E%3Cline x1='29' y1='17' x2='30' y2='37' stroke='%23808080' stroke-width='1.5'/%3E%3Crect x='20' y='2' width='8' height='5' rx='1' fill='none' stroke='%23808080'/%3E%3C/svg%3E"
       alt="Recycle Bin">
     <span>Корзина</span>
   </div>
-  <div class="desktop-icon desktop-icon-mail" style="top:180px; left:20px"
-    ondblclick="window.openWindow('win-main', 'tb-main')">
+  <div class="desktop-icon desktop-icon-mail" style="top:200px; left:20px" onclick="smartOpen('win-main', 'tb-main')">
     <img
-      src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath fill='%23fff' d='M4 8h24v16H4z'/%3E%3Cpath fill='%23d4d0c8' d='M4 8h24v2H4z'/%3E%3Cpath fill='%23808080' d='M4 8L16 20 28 8v1H4z'/%3E%3Cpath fill='%23000' d='M4 8l12 11L28 8' stroke='%23808080' stroke-width='2'/%3E%3C/svg%3E"
+      src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect x='4' y='10' width='40' height='28' rx='2' fill='%23fffde8' stroke='%23808080'/%3E%3Cpath d='M4 10l20 16 20-16' fill='none' stroke='%23808080' stroke-width='1.5'/%3E%3Cpath d='M4 38l14-12M44 38l-14-12' fill='none' stroke='%23c0c0c0' stroke-width='1'/%3E%3Crect x='6' y='12' width='36' height='2' fill='%230a246a' opacity='0.1'/%3E%3C/svg%3E"
       alt="Mail">
     <span>Outlook Express <b style="color:#ff5f56">(1)</b></span>
   </div>
@@ -164,7 +190,7 @@
   </div>
 
   <!-- My Computer Window -->
-  <div class="window hidden" id="win-computer" style="width:500px;height:400px;z-index:20;">
+  <div class="window window-small hidden" id="win-computer">
     <div class="title-bar">
       <div class="title-bar-text">Мой компьютер</div>
       <div class="title-bar-controls">
@@ -178,28 +204,28 @@
     <div class="menubar"><span><u>F</u>ile</span><span><u>E</u>dit</span><span><u>V</u>iew</span></div>
     <div class="window-body" style="flex-wrap:wrap;align-content:flex-start;gap:5px;overflow:auto;">
       <div class="folder-icon"
-        ondblclick="winAlert('Диск C:\\\\ переполнен мемами и рецептами шашлыка.\n\nСвободно: 0 байт.\nЗанято: 100% позитивом.', 'error')">
+        onclick="winAlert('Диск C:\\\\ переполнен мемами и рецептами шашлыка.\n\nСвободно: 0 байт.\nЗанято: 100% позитивом.', 'error')">
         <img
           src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect fill='%23d4d0c8' x='4' y='8' width='24' height='18' rx='1'/%3E%3Crect fill='%23fff' x='6' y='10' width='20' height='14'/%3E%3Ctext x='16' y='20' text-anchor='middle' font-size='9' fill='%230a246a' font-weight='bold'%3EC:%3C/text%3E%3C/svg%3E"
           width="32" height="32">
         <span>Диск (C:)</span>
       </div>
       <div class="folder-icon"
-        ondblclick="winAlert('Диск D:\\\\ содержит секретную папку:\n\n[dir] Новая папка (228)\n[dir] Рецепты самогона\n[dir] Как починить кран своими руками\n[dir] KAZANTIP_2007_PHOTO', 'info')">
+        onclick="winAlert('Диск D:\\\\ содержит секретную папку:\n\n[dir] Новая папка (228)\n[dir] Рецепты самогона\n[dir] Как починить кран своими руками\n[dir] KAZANTIP_2007_PHOTO', 'info')">
         <img
           src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect fill='%23d4d0c8' x='4' y='8' width='24' height='18' rx='1'/%3E%3Crect fill='%23fff' x='6' y='10' width='20' height='14'/%3E%3Ctext x='16' y='20' text-anchor='middle' font-size='9' fill='%230a246a' font-weight='bold'%3ED:%3C/text%3E%3C/svg%3E"
           width="32" height="32">
         <span>Диск (D:)</span>
       </div>
       <div class="folder-icon"
-        ondblclick="winAlert('Дисковод A:\\\\ не найден.\n\nВставьте дискету с поздравлениями и повторите попытку.', 'error')">
+        onclick="winAlert('Дисковод A:\\\\ не найден.\n\nВставьте дискету с поздравлениями и повторите попытку.', 'error')">
         <img
           src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect fill='%23808080' x='8' y='6' width='16' height='20' rx='1'/%3E%3Crect fill='%23d4d0c8' x='10' y='10' width='12' height='6'/%3E%3Crect fill='%23404040' x='14' y='22' width='4' height='2'/%3E%3C/svg%3E"
           width="32" height="32">
         <span>Диск 3,5 (A:)</span>
       </div>
       <div class="folder-icon"
-        ondblclick="winAlert('Панель управления\n\nВсе настройки уже оптимальны.\nНичего не трогай, оно работает! =)', 'info')">
+        onclick="winAlert('Панель управления\n\nВсе настройки уже оптимальны.\nНичего не трогай, оно работает! =)', 'info')">
         <img
           src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect fill='%23d4d0c8' x='4' y='8' width='24' height='16' rx='2'/%3E%3Ccircle fill='%23808080' cx='10' cy='16' r='3'/%3E%3Ccircle fill='%23808080' cx='22' cy='16' r='3'/%3E%3Crect fill='%23808080' x='14' y='13' width='4' height='6' rx='1'/%3E%3C/svg%3E"
           width="32" height="32">
@@ -212,7 +238,7 @@
   </div>
 
   <!-- Recycle Bin Window -->
-  <div class="window hidden" id="win-bin" style="width:450px;height:350px;z-index:20;">
+  <div class="window window-small hidden" id="win-bin">
     <div class="title-bar">
       <div class="title-bar-text">Корзина</div>
       <div class="title-bar-controls">
@@ -232,31 +258,31 @@
             <th style="padding:3px;text-align:left;">Размер</th>
           </tr>
           <tr style="cursor:pointer;"
-            ondblclick="winAlert('Этот файл удалить невозможно.\nМолодость не восстанавливается из корзины. =(', 'error')">
+            onclick="winAlert('Этот файл удалить невозможно.\nМолодость не восстанавливается из корзины. =(', 'error')">
             <td style="padding:3px;">Молодость.exe</td>
             <td style="padding:3px;">01.01.2000</td>
             <td style="padding:3px;">??? KB</td>
           </tr>
           <tr style="cursor:pointer;"
-            ondblclick="winAlert('Файл повреждён.\nПохудение невозможно восстановить.\nПопробуйте меньше жрать после 6. xD', 'warning')">
+            onclick="winAlert('Файл повреждён.\nПохудение невозможно восстановить.\nПопробуйте меньше жрать после 6. xD', 'warning')">
             <td style="padding:3px;">Диета_финал.doc</td>
             <td style="padding:3px;">15.03.2003</td>
             <td style="padding:3px;">42 KB</td>
           </tr>
           <tr style="cursor:pointer;"
-            ondblclick="winAlert('Невозможно восстановить файл.\nЗарплата ушла безвозвратно.\nОбратитесь к бухгалтеру Марьиванне. O_o', 'error')">
+            onclick="winAlert('Невозможно восстановить файл.\nЗарплата ушла безвозвратно.\nОбратитесь к бухгалтеру Марьиванне. O_o', 'error')">
             <td style="padding:3px;">Зарплата_январь.xls</td>
             <td style="padding:3px;">31.01.2005</td>
             <td style="padding:3px;">0 KB</td>
           </tr>
           <tr style="cursor:pointer;"
-            ondblclick="winAlert('Этот файл удалён из корзины.\nИ из памяти.\nЛучше бы и не вспоминать... ~_~', 'info')">
+            onclick="winAlert('Этот файл удалён из корзины.\nИ из памяти.\nЛучше бы и не вспоминать... ~_~', 'info')">
             <td style="padding:3px;">Фотки_корпоратив_2004.zip</td>
             <td style="padding:3px;">02.01.2005</td>
             <td style="padding:3px;">1337 KB</td>
           </tr>
           <tr style="cursor:pointer;"
-            ondblclick="winAlert('Волосы удалены безвозвратно.\nОткат невозможен.\nПримите это как есть. =)', 'warning')">
+            onclick="winAlert('Волосы удалены безвозвратно.\nОткат невозможен.\nПримите это как есть. =)', 'warning')">
             <td style="padding:3px;">Волосы_на_голове.bak</td>
             <td style="padding:3px;">Somewhere in time</td>
             <td style="padding:3px;">0 KB</td>
